@@ -14,19 +14,20 @@ const demoUserData = {
   ],
 };
 
-const UserProfile = ({ userData, onRequestSwap }) => {
+const UserProfile = ({ userData }) => {
+  const data = userData && Object.keys(userData).length > 0 ? userData : demoUserData;
   const [popupOpen, setPopupOpen] = useState(false);
   const [offeredSkill, setOfferedSkill] = useState('');
   const [wantedSkill, setWantedSkill] = useState('');
   const [message, setMessage] = useState('');
+  const [requestSent, setRequestSent] = useState(false);
 
   const handleRequestClick = () => setPopupOpen(true);
   const handleClose = () => setPopupOpen(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would handle the swap request logic
     setPopupOpen(false);
-    alert('Swap request submitted!');
+    setRequestSent(true);
   };
 
   return (
@@ -36,32 +37,36 @@ const UserProfile = ({ userData, onRequestSwap }) => {
           {/* Profile Photo and Request Button */}
           <div className="flex flex-col items-center md:items-start">
             <img
-              src={userData.image}
+              src={data.image}
               alt="Profile"
               className="w-40 h-40 rounded-full object-cover border-4 border-blue-600"
             />
-            <button
-              className="mt-6 px-6 py-2 bg-cyan-900 text-white rounded-lg text-lg font-semibold shadow hover:bg-cyan-800 transition"
-              onClick={handleRequestClick}
-            >
-              Request
-            </button>
+            {requestSent ? (
+              <span className="mt-6 px-6 py-2 rounded-lg text-lg font-semibold text-green-600 bg-green-100">Request Sent</span>
+            ) : (
+              <button
+                className="mt-6 px-6 py-2 bg-cyan-900 text-white rounded-lg text-lg font-semibold shadow hover:bg-cyan-800 transition"
+                onClick={handleRequestClick}
+              >
+                Request
+              </button>
+            )}
           </div>
 
           {/* User Info */}
           <div className="flex-1 space-y-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">{userData.name}</h1>
-              <p className="text-xl text-blue-600 font-medium">@{userData.name?.toLowerCase().replace(' ', '_')}</p>
+              <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
+              <p className="text-xl text-blue-600 font-medium">@{data.name?.toLowerCase().replace(' ', '_')}</p>
             </div>
             <div>
               <h3 className="text-lg text-gray-700">Email:</h3>
-              <p className="text-xl font-medium text-gray-800">{userData.email}</p>
+              <p className="text-xl font-medium text-gray-800">{data.email}</p>
             </div>
             <div>
               <h3 className="text-lg text-gray-700 mb-1">Skills Offered</h3>
               <ul className="list-disc ml-6 text-lg text-gray-800">
-                {userData.skillsOffered?.length ? userData.skillsOffered.map((skill, idx) => (
+                {data.skillsOffered?.length ? data.skillsOffered.map((skill, idx) => (
                   <li key={idx}>{skill}</li>
                 )) : <li>No skills listed</li>}
               </ul>
@@ -69,7 +74,7 @@ const UserProfile = ({ userData, onRequestSwap }) => {
             <div>
               <h3 className="text-lg text-gray-700 mb-1">Skills Wanted</h3>
               <ul className="list-disc ml-6 text-lg text-gray-800">
-                {userData.skillsWanted?.length ? userData.skillsWanted.map((skill, idx) => (
+                {data.skillsWanted?.length ? data.skillsWanted.map((skill, idx) => (
                   <li key={idx}>{skill}</li>
                 )) : <li>No skills listed</li>}
               </ul>
@@ -77,9 +82,9 @@ const UserProfile = ({ userData, onRequestSwap }) => {
             <div>
               <h3 className="text-lg text-gray-700 mb-1">Rating and Feedback</h3>
               <div className="text-base text-gray-700">
-                {userData.feedback?.length ? (
+                {data.feedback?.length ? (
                   <ul className="list-disc ml-6">
-                    {userData.feedback.map((fb, idx) => (
+                    {data.feedback.map((fb, idx) => (
                       <li key={idx}>
                         <span className="font-semibold">{fb.reviewer}:</span> {fb.comment} <span className="text-yellow-500">{'★'.repeat(fb.rating)}</span>
                       </li>
@@ -144,7 +149,7 @@ const UserProfile = ({ userData, onRequestSwap }) => {
   );
 };
 
-// Demo usage for preview
-export default function DemoUserProfile() {
-  return <UserProfile userData={demoUserData} />;
-}
+export default UserProfile;
+
+
+
