@@ -1,16 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from '../api/axiosInstance'; // ✅ import axios instance
+
 
 const Loginpage = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
+const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate(); 
-    const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const username = email.split('@')[0];
-    onLogin(username);
-    navigate('/'); 
+    setError('');
+
+    try {
+      const res = await axios.post('/auth/login', {
+        email,
+        password
+      });
+
+      const { token } = res.data;
+
+      // Optional: store in localStorage
+      localStorage.setItem('token', token);
+
+      const username = email.split('@')[0];
+      onLogin(username); // could use decoded username from token for better accuracy
+
+      navigate('/');
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-center font-sans">
