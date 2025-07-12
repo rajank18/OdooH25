@@ -1,11 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const userSkillController = require('../controllers/userSkill.controller');
+const validate = require("../middlewares/validate");
+const userSkillController = require("../controllers/userSkill.controller");
 
-router.post('/', userSkillController.addUserSkill);
-router.get('/search', userSkillController.searchUsersBySkill);
-router.get('/user/:userId', userSkillController.getUserSkills);
-router.put('/:id', userSkillController.updateUserSkill);
-router.delete('/:id', userSkillController.removeUserSkill);
+router.get("/me", userSkillController.getMySkills);
+router.post("/", userSkillController.addUserSkill);
+router.delete("/:id", userSkillController.deleteUserSkill);
 
 module.exports = router;
