@@ -9,6 +9,7 @@ function App() {
   return (
     <>
      <p>DONE!!!!</p>
+     <p>BASIC FRONTEND SETUP IS DONE</p>
     </>
   )
 }
