@@ -1,6 +1,5 @@
-// src/pages/Signuppage.jsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = ({ onSignup }) => {
   const [email, setEmail] = useState('');
@@ -8,21 +7,19 @@ const SignupPage = ({ onSignup }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
+    setError('');
 
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
 
-    // In a real application, you would send this data to your backend
-    // For now, we'll just simulate a successful signup
     onSignup({ email, name });
-    navigate('/login'); // Redirect to login page after signup
+    navigate('/login');
   };
 
   return (
@@ -84,7 +81,6 @@ const SignupPage = ({ onSignup }) => {
             Sign Up
           </button>
           <div className="text-right">
-            {/* Use navigate directly for routing */}
             <a href="#" onClick={() => navigate('/login')}>Already have an account? Login</a>
           </div>
         </form>

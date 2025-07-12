@@ -5,7 +5,8 @@ import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import Loginpage from './pages/Loginpage';
 import SignupPage from './pages/Signuppage';
-import ProfilePage from './pages/Userprofile';
+import YourProfile from './pages/YourProfile';
+import UserProfile from './pages/User-Profile';
 
 // Wrapper to use `useLocation` (only works inside Router)
 function AppContent({ isLoggedIn, userData, handleLogin, handleSignup }) {
@@ -30,7 +31,8 @@ function AppContent({ isLoggedIn, userData, handleLogin, handleSignup }) {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Loginpage onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignupPage onSignup={handleSignup} />} />
-        <Route path="/profile" element={<ProfilePage userData={userData} />} />
+        <Route path="/yourprofile" element={<YourProfile userData={userData} />} />
+        <Route path="/userprofile" element={<UserProfile userData={userData} />} />
       </Routes>
     </>
   );
