@@ -17,11 +17,8 @@
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-<<<<<<< HEAD
     "react-router-dom": "^7.6.3",
-=======
     "tailwind-merge": "^3.3.1",
->>>>>>> e10b0428861907eba42459ba426ffd5855f8a09b
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
