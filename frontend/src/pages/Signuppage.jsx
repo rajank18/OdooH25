@@ -71,7 +71,7 @@ const SignupPage = ({ onSignup }) => {
           </button>
           <div className="text-right">
             {/* Use navigate directly for routing */}
-            <a href="#" onClick={() => navigate('/login')} className="hover:underline">Already have an account? Login</a>
+            <a href="#" onClick={() => navigate('/login')}>Already have an account? Login</a>
           </div>
         </form>
       </div>

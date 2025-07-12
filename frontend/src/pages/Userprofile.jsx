@@ -23,10 +23,10 @@ const ProfilePage = ({ userData }) => {
               className="w-40 h-40 rounded-full object-cover border-4 border-blue-600"
             />
             <div className="flex gap-4 mt-4">
-              <button className="flex items-center gap-1 text-blue-600 hover:underline text-lg">
+              <button className="flex items-center gap-1 text-blue-600 cursor-pointer text-lg">
                 <Pencil size={18} /> Edit
               </button>
-              <button className="flex items-center gap-1 text-red-600 hover:underline text-lg">
+              <button className="flex items-center gap-1 text-red-600 cursor-pointer text-lg">
                 <Trash2 size={18} /> Delete
               </button>
             </div>
@@ -62,7 +62,7 @@ const ProfilePage = ({ userData }) => {
                   <>
                     <span>{location}</span>
                     <button onClick={() => setEditingLocation(true)}>
-                      <Pencil size={18} className="text-gray-600 hover:text-blue-600" />
+                      <Pencil size={18} className="text-gray-600 hover:text-blue-600 cursor-pointer" />
                     </button>
                   </>
                 )}
@@ -88,7 +88,7 @@ const ProfilePage = ({ userData }) => {
                 <div className="flex items-center gap-2 text-xl font-medium">
                   <span>{availability}</span>
                   <button onClick={() => setEditingAvailability(true)}>
-                    <Pencil size={18} className="text-gray-600 hover:text-blue-600" />
+                    <Pencil size={18} className="text-gray-600 hover:text-blue-600 cursor-pointer" />
                   </button>
                 </div>
               )}
@@ -107,7 +107,7 @@ const ProfilePage = ({ userData }) => {
                 </span>
                 <button
                   onClick={() => setIsPublic(!isPublic)}
-                  className="text-blue-600 hover:underline text-base"
+                  className="text-blue-600 cursor-pointer text-base"
                 >
                   {isPublic ? 'Make Private' : 'Make Public'}
                 </button>

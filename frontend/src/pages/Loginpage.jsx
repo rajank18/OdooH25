@@ -42,7 +42,7 @@ const Loginpage = ({ onLogin }) => {
             />
           </div>
           <div className="text-right">
-            <a href="#" className="text-sm text-blue-500 hover:underline">Forgot password?</a>
+            <a href="#" className="text-sm text-blue-500 cursor-pointer">Forgot password?</a>
           </div>
           <button
             type="submit"
@@ -52,7 +52,7 @@ const Loginpage = ({ onLogin }) => {
           </button>
           <div className="text-right">
             {/* Use navigate directly for routing */}
-            <a href="#" onClick={() => navigate('/signup')} className="hover:underline">Doesn't have an account? Sign Up</a>
+            <a href="#" onClick={() => navigate('/signup')}>Doesn't have an account? Sign Up</a>
           </div>
         </form>
       </div>
