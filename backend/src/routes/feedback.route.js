@@ -1,11 +1,11 @@
-const express = require('express');
+// File: routes/feedback.routes.js
+const express = require("express");
 const router = express.Router();
-const feedbackController = require('../controllers/feedback.controller');
+const validate = require("../middlewares/validate");
+const { feedbackSchema } = require("../validations/swap.validation");
+const feedbackController = require("../controllers/feedback.controller");
 
-router.post('/', feedbackController.createFeedback);
-router.get('/', feedbackController.getAllFeedback);
-router.get('/user/:userId', feedbackController.getUserFeedback);
-router.put('/:id', feedbackController.updateFeedback);
-router.delete('/:id', feedbackController.deleteFeedback);
+router.post("/", validate(feedbackSchema), feedbackController.createFeedback);
+router.get("/user/:userId", feedbackController.getUserFeedback);
 
 module.exports = router;

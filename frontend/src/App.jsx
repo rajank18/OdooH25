@@ -6,6 +6,7 @@ import Header from './components/Header'; // Assuming Header exists
 import Homepage from './pages/Homepage'; // Assuming Homepage exists
 import Loginpage from './pages/Loginpage';
 import SignupPage from './pages/Signuppage';
+import ProfilePage from './pages/Userprofile'
 
 function AppWrapper() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +33,7 @@ function AppWrapper() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Loginpage onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignupPage onSignup={handleSignup} />} />
+        <Route path="/profile" element={<ProfilePage userData={userData} />} />
       </Routes>
     </Router>
   );

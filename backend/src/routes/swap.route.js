@@ -1,12 +1,15 @@
-const express = require('express');
+// File: routes/swap.routes.js
+const express = require("express");
 const router = express.Router();
-const swapController = require('../controllers/swap.controller');
+const validate = require("../middlewares/validate");
+const { createSwapSchema } = require("../validations/swap.validation");
+const swapController = require("../controllers/swap.controller");
 
-router.post('/', swapController.createSwapRequest);
-router.get('/', swapController.getAllSwaps);
-router.get('/user/:userId', swapController.getUserSwaps);
-router.put('/:id/accept', swapController.acceptSwap);
-router.put('/:id/reject', swapController.rejectSwap);
-router.delete('/:id', swapController.deleteSwap);
+router.post("/", validate(createSwapSchema), swapController.createSwap);
+router.get("/me/sent", swapController.getSentSwaps);
+router.get("/me/received", swapController.getReceivedSwaps);
+router.patch("/:id/accept", swapController.acceptSwap);
+router.patch("/:id/reject", swapController.rejectSwap);
+router.patch("/:id/cancel", swapController.cancelSwap);
 
 module.exports = router;
