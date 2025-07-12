@@ -1,9 +1,11 @@
-import './App.css';
+// App.jsx
+import './App.css'; // Ensure this is imported for the custom styles
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import Header from './components/Header';
-import Homepage from './pages/Homepage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header'; // Assuming Header exists
+import Homepage from './pages/Homepage'; // Assuming Homepage exists
 import Loginpage from './pages/Loginpage';
+import SignupPage from './pages/Signuppage';
 
 function AppWrapper() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,12 +19,19 @@ function AppWrapper() {
     });
   };
 
+  const handleSignup = (email) => {
+    console.log(`User signed up with email: ${email}`);
+    // The SignupPage component handles navigation back to the login page
+  };
+
   return (
     <Router>
+      {/* Header is assumed to be outside the main content area */}
       <Header isLoggedIn={isLoggedIn} userData={userData} />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Loginpage onLogin={handleLogin} />} />
+        <Route path="/signup" element={<SignupPage onSignup={handleSignup} />} />
       </Routes>
     </Router>
   );
