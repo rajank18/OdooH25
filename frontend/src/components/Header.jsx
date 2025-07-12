@@ -25,14 +25,17 @@ const Header = ({ isLoggedIn, userData }) => {
         {/* Right Side: Either Log In or User Info */}
         <div className="hidden md:flex items-center gap-3">
           {isLoggedIn ? (
-            <>
+            <div
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => navigate('/yourprofile')}
+            >
               <img
                 src={userData.image}
                 alt="profile"
                 className="w-8 h-8 rounded-full"
               />
               <span className="font-medium">{userData.name}</span>
-            </>
+            </div>
           ) : (
             <button
               onClick={() => navigate('/login')}
