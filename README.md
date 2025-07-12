@@ -1,12 +1,12 @@
 # Team Eureka
 
-Rajan Kanzariya
+Rajan Kanzariya - rajankanzariya1806@gmail.com
 
-Darshan Hotchandani
+Darshan Hotchandani - darshanhotchandani07@gmail.com
 
-Manav Majmudar
+Manav Majmudar - manavmajmudar01@gmail.com
 
-Deep Patel
+Deep Patel - deeppatel5501@gmail.com
 
 # 1. Skill Swap Platform
 
