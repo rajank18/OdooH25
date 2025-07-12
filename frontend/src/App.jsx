@@ -1,12 +1,42 @@
-// App.jsx
-import './App.css'; // Ensure this is imported for the custom styles
+import './App.css';
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header'; // Assuming Header exists
-import Homepage from './pages/Homepage'; // Assuming Homepage exists
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import Header from './components/Header';
+import Homepage from './pages/Homepage';
 import Loginpage from './pages/Loginpage';
 import SignupPage from './pages/Signuppage';
-import ProfilePage from './pages/Userprofile'
+import YourProfile from './pages/YourProfile';
+import UserProfile from './pages/User-Profile';
+
+// Wrapper to use `useLocation` (only works inside Router)
+function AppContent({ isLoggedIn, userData, handleLogin, handleSignup }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const currentPath = location.pathname;
+
+  // Define paths where you want a minimal header
+  const isAuthPage = currentPath === '/login' || currentPath === '/signup';
+
+  return (
+    <>
+      {isAuthPage ? (
+        <div onClick={() => navigate('/')} className="bg-gray-900 text-white text-center py-4 text-2xl font-bold tracking-wide cursor-pointer">
+          SkillSwap
+        </div>
+      ) : (
+        <Header isLoggedIn={isLoggedIn} userData={userData} />
+      )}
+
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Loginpage onLogin={handleLogin} />} />
+        <Route path="/signup" element={<SignupPage onSignup={handleSignup} />} />
+        <Route path="/yourprofile" element={<YourProfile userData={userData} />} />
+        <Route path="/userprofile" element={<UserProfile userData={userData} />} />
+      </Routes>
+    </>
+  );
+}
 
 function AppWrapper() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,19 +52,16 @@ function AppWrapper() {
 
   const handleSignup = (email) => {
     console.log(`User signed up with email: ${email}`);
-    // The SignupPage component handles navigation back to the login page
   };
 
   return (
     <Router>
-      {/* Header is assumed to be outside the main content area */}
-      <Header isLoggedIn={isLoggedIn} userData={userData} />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Loginpage onLogin={handleLogin} />} />
-        <Route path="/signup" element={<SignupPage onSignup={handleSignup} />} />
-        <Route path="/profile" element={<ProfilePage userData={userData} />} />
-      </Routes>
+      <AppContent
+        isLoggedIn={isLoggedIn}
+        userData={userData}
+        handleLogin={handleLogin}
+        handleSignup={handleSignup}
+      />
     </Router>
   );
 }

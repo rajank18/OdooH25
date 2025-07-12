@@ -1,17 +1,15 @@
-// src/pages/Loginpage.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 const Loginpage = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
-
-  const handleSubmit = (e) => {
+  const navigate = useNavigate(); 
+    const handleSubmit = (e) => {
     e.preventDefault();
     const username = email.split('@')[0];
     onLogin(username);
-    navigate('/'); // Redirect to homepage after login
+    navigate('/'); 
   };
 
   return (
@@ -42,7 +40,7 @@ const Loginpage = ({ onLogin }) => {
             />
           </div>
           <div className="text-right">
-            <a href="#" className="text-sm text-blue-500 hover:underline">Forgot password?</a>
+            <a href="#" className="text-sm text-blue-500 cursor-pointer">Forgot password?</a>
           </div>
           <button
             type="submit"
@@ -51,8 +49,8 @@ const Loginpage = ({ onLogin }) => {
             Login
           </button>
           <div className="text-right">
-            {/* Use navigate directly for routing */}
-            <a href="#" onClick={() => navigate('/signup')} className="hover:underline">Doesn't have an account? Sign Up</a>
+         
+            <a href="#" onClick={() => navigate('/signup')}>Doesn't have an account? Sign Up</a>
           </div>
         </form>
       </div>

@@ -16,7 +16,7 @@ const Homepage = () => {
     return (
         <div className="flex flex-col items-center p y-8 px-4">
             {/* Search & Filter Section */}
-            <div className="flex items-center gap-4 mb-8 w-full max-w-2xl justify-center bg-white p-4 rounded-xl shadow">
+            <div className="flex items-center gap-4 mb-8 w-full max-w-2xl justify-center bg-white p-4 rounded-xl shadow mt-5">
                 {/* Filter Dropdown */}
                 <Select>
                     <SelectTrigger className="w-[180px]">
@@ -52,6 +52,20 @@ const Homepage = () => {
                 offered="React, UI Design"
                 wanted="Node.js, MongoDB"
                 rating={4.5}
+            />
+            <SkillCard
+                image="https://ui-avatars.com/api/?name=Priya&background=8e44ad&color=fff"
+                name="Priya Mehta"
+                offered="Python, ML"
+                wanted="Web Dev"
+                rating={4.8}
+            />
+            <SkillCard
+                image="https://ui-avatars.com/api/?name=Priya&background=8e44ad&color=fff"
+                name="Priya Mehta"
+                offered="Python, ML"
+                wanted="Web Dev"
+                rating={4.8}
             />
             <SkillCard
                 image="https://ui-avatars.com/api/?name=Priya&background=8e44ad&color=fff"

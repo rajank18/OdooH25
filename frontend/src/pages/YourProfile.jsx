@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Pencil, Trash2 } from 'lucide-react';
 
-const ProfilePage = ({ userData }) => {
+const YourProfile = ({ userData }) => {
   const [location, setLocation] = useState(userData.location);
   const [editingLocation, setEditingLocation] = useState(false);
 
@@ -15,7 +15,7 @@ const ProfilePage = ({ userData }) => {
       <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl p-10">
         <div className="flex flex-col md:flex-row gap-12">
           
-          {/* Left - Photo and Actions */}
+         
           <div className="flex flex-col items-center md:items-start">
             <img
               src={userData.image}
@@ -23,18 +23,18 @@ const ProfilePage = ({ userData }) => {
               className="w-40 h-40 rounded-full object-cover border-4 border-blue-600"
             />
             <div className="flex gap-4 mt-4">
-              <button className="flex items-center gap-1 text-blue-600 hover:underline text-lg">
+              <button className="flex items-center gap-1 text-blue-600 cursor-pointer text-lg">
                 <Pencil size={18} /> Edit
               </button>
-              <button className="flex items-center gap-1 text-red-600 hover:underline text-lg">
+              <button className="flex items-center gap-1 text-red-600 cursor-pointer text-lg">
                 <Trash2 size={18} /> Delete
               </button>
             </div>
           </div>
 
-          {/* Right - Info */}
+   
           <div className="flex-1 space-y-6">
-            {/* Name & Tag */}
+     
             <div>
               <h1 className="text-3xl font-bold text-gray-900">{userData.name}</h1>
               <p className="text-xl text-blue-600 font-medium">@{userData.name.toLowerCase().replace(' ', '_')}</p>
@@ -62,7 +62,7 @@ const ProfilePage = ({ userData }) => {
                   <>
                     <span>{location}</span>
                     <button onClick={() => setEditingLocation(true)}>
-                      <Pencil size={18} className="text-gray-600 hover:text-blue-600" />
+                      <Pencil size={18} className="text-gray-600 hover:text-blue-600 cursor-pointer" />
                     </button>
                   </>
                 )}
@@ -88,7 +88,7 @@ const ProfilePage = ({ userData }) => {
                 <div className="flex items-center gap-2 text-xl font-medium">
                   <span>{availability}</span>
                   <button onClick={() => setEditingAvailability(true)}>
-                    <Pencil size={18} className="text-gray-600 hover:text-blue-600" />
+                    <Pencil size={18} className="text-gray-600 hover:text-blue-600 cursor-pointer" />
                   </button>
                 </div>
               )}
@@ -107,7 +107,7 @@ const ProfilePage = ({ userData }) => {
                 </span>
                 <button
                   onClick={() => setIsPublic(!isPublic)}
-                  className="text-blue-600 hover:underline text-base"
+                  className="text-blue-600 cursor-pointer text-base"
                 >
                   {isPublic ? 'Make Private' : 'Make Public'}
                 </button>
@@ -120,4 +120,4 @@ const ProfilePage = ({ userData }) => {
   );
 };
 
-export default ProfilePage;
+export default YourProfile;
