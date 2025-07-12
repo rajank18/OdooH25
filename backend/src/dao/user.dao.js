@@ -11,6 +11,7 @@ const findUserById = async (id) => {
         include: [
             {
                 model: UserSkill,
+                as : "skills",
                 include: [Skill],
             },
         ],

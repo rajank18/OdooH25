@@ -17,7 +17,7 @@ app.get("/", (_req, res) => {
     res.send("Hello World! This is SkillShare-API by Team Eureka.");
 });
 
-app.use(Router);
+app.use("/api",Router);
 
 // app.use(notFound);
 // app.use(errorHandler);
