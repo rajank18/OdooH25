@@ -12,7 +12,7 @@ const SkillCard = ({ image, name, offered, wanted, rating, userId }) => {
           src={image}
           alt={name}
           className="w-16 h-16 rounded-full object-cover border-2 border-gray-300 cursor-pointer"
-          onClick={() => navigate(`/user-profile`)}
+          onClick={() => navigate(`/UserProfile`)}
         />
         <div>
           <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
