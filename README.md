@@ -1,5 +1,4 @@
-# Team
-Team Eureka
+# Team Eureka
 
 Rajan Kanzariya
 
