@@ -2,7 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
-import Loginpage from './pages/Loginpage'; // 👈 matches file and export
+import Loginpage from './pages/Loginpage'; 
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
