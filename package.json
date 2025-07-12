@@ -1,12 +1,32 @@
 {
+  "name": "odooh25",
+  "version": "1.0.0",
+  "description": "Rajan Kanzariya - rajankanzariya1806@gmail.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
+    "lint": "npm run lint --prefix frontend && npm run lint --prefix backend",
+    "format": "prettier \"**/*.{js,jsx,json,css,md}\" --ignore-path .gitignore --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajank18/OdooH25.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rajank18/OdooH25/issues"
+  },
+  "homepage": "https://github.com/rajank18/OdooH25#readme",
   "devDependencies": {
     "@eslint/js": "^9.31.0",
+    "concurrently": "^9.2.0",
     "eslint": "^9.31.0",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^16.3.0"
-  },
-  "scripts": {
-  "lint": "eslint . --ext .js,.jsx",
-  "lint:fix": "eslint . --ext .js,.jsx --fix"
-}
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2"
+  }
 }
