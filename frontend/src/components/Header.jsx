@@ -17,7 +17,7 @@ const Header = ({ isLoggedIn, userData }) => {
         {/* Title (Clickable) */}
         <div
           onClick={() => navigate('/')}
-          className="text-xl font-bold tracking-wide text-center w-full md:w-auto md:text-left md:ml-4 cursor-pointer hover:underline"
+          className="text-xl font-bold tracking-wide text-center w-full md:w-auto md:text-left md:ml-4 cursor-pointer"
         >
           SkillSwap
         </div>
@@ -36,7 +36,7 @@ const Header = ({ isLoggedIn, userData }) => {
           ) : (
             <button
               onClick={() => navigate('/login')}
-              className="font-medium hover:underline focus:outline-none"
+              className="font-medium cursor-pointer focus:outline-none"
             >
               Log In
             </button>
