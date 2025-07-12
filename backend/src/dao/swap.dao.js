@@ -25,10 +25,24 @@ const updateSwapStatus = async (id, status) => {
     return await swap.update({ status });
 };
 
+const getSwapStats = async () => {
+    const total = await SwapRequest.count();
+    const pending = await SwapRequest.count({ where: { status: "pending" } });
+    const accepted = await SwapRequest.count({ where: { status: "accepted" } });
+    const rejected = await SwapRequest.count({ where: { status: "rejected" } });
+    const cancelled = await SwapRequest.count({
+        where: { status: "cancelled" },
+    });
+
+    return { total, pending, accepted, rejected, cancelled };
+};
+
+// swap.dao.js
 module.exports = {
     createSwap,
     getSwapById,
     getSentSwaps,
     getReceivedSwaps,
     updateSwapStatus,
+    getSwapStats,
 };

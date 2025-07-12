@@ -45,6 +45,26 @@ const searchUsersBySkill = async (skillName) => {
     });
 };
 
+const countUsers = async () => {
+    return await User.count();
+};
+
+const getAllUsers = async () => {
+    return await User.findAll({
+        attributes: { exclude: ["password"] },
+        order: [["createdAt", "DESC"]],
+    });
+};
+
+const banUser = async (userId) => {
+    const user = await User.findByPk(userId);
+    if (!user) throw new Error("User not found");
+    user.isBanned = true;
+    await user.save();
+    return user;
+};
+
+// user.dao.js
 module.exports = {
     createUser,
     findUserById,
@@ -52,4 +72,7 @@ module.exports = {
     updateUser,
     deleteUser,
     searchUsersBySkill,
+    countUsers,
+    getAllUsers,
+    banUser,
 };

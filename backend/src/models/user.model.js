@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
                 unique: true,
             },
+            password: {
+                type: DataTypes.STRING,
+            },
             location: DataTypes.STRING,
             profilePhoto: DataTypes.STRING,
             availability: DataTypes.STRING,
@@ -30,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.ENUM("active", "banned"),
                 defaultValue: "active",
             },
+            isBanned: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
+            }
         },
         {
             tableName: "users",

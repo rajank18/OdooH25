@@ -10,7 +10,7 @@ const createSwapSchema = z.object({
 const feedbackSchema = z.object({
     swapId: z.number(),
     rating: z.number().min(1).max(5),
-    comments: z.string().optional(),
+    comments: z.string().max(1000).optional(),
 });
 
 module.exports = { createSwapSchema, feedbackSchema };

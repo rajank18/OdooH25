@@ -9,6 +9,8 @@ const getLogs = async () => {
     return await ActivityLog.findAll();
 };
 
+
+// activityLog.dao.js
 module.exports = {
     logAction,
     getLogs,
