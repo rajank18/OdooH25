@@ -1,8 +1,8 @@
 // File: routes/user.routes.js
 const express = require("express");
 const router = express.Router();
-const validate = require("../middlewares/validate");
-const auth = require("../middlewares/auth");
+const validate = require("../middlewares/validate.middleware.js");
+const auth = require("../middlewares/auth.middleware.js");
 const { updateUserSchema } = require("../validations/user.validation");
 const userController = require("../controllers/user.controller");
 
