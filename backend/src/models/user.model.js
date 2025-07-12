@@ -1,3 +1,4 @@
+// models/user.js
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
@@ -14,6 +15,21 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
                 unique: true,
             },
+            location: DataTypes.STRING,
+            profilePhoto: DataTypes.STRING,
+            availability: DataTypes.STRING,
+            isPublic: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: true,
+            },
+            role: {
+                type: DataTypes.ENUM("user", "admin"),
+                defaultValue: "user",
+            },
+            status: {
+                type: DataTypes.ENUM("active", "banned"),
+                defaultValue: "active",
+            },
         },
         {
             tableName: "users",
@@ -21,9 +37,21 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
-    // Associations if any
     User.associate = (models) => {
-        // Example: User.hasMany(models.Exam);
+        User.hasMany(models.UserSkill, { foreignKey: "userId", as: "skills" });
+        User.hasMany(models.SwapRequest, {
+            foreignKey: "requesterId",
+            as: "sentSwaps",
+        });
+        User.hasMany(models.SwapRequest, {
+            foreignKey: "receiverId",
+            as: "receivedSwaps",
+        });
+        User.hasMany(models.SwapFeedback, {
+            foreignKey: "givenBy",
+            as: "feedbackGiven",
+        });
+        User.hasMany(models.ActivityLog, { foreignKey: "userId", as: "logs" });
     };
 
     return User;
