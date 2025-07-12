@@ -33,12 +33,16 @@ exports.getUserById = async (req, res, next) => {
     }
 };
 
-// GET /search?skill=...
+// controller/user.controller.js
+// GET /search
 exports.searchUsers = async (req, res, next) => {
     try {
         const skill = req.query.skill;
+        const type = req.query.type; // optional: "offered" or "wanted"
+
         if (!skill) throw new ApiError(400, "Skill query param required");
-        const users = await userDao.searchUsersBySkill(skill);
+
+        const users = await userDao.searchUsersBySkill(skill, type);
         res.json(users);
     } catch (err) {
         next(err);

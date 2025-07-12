@@ -11,7 +11,7 @@ const findUserById = async (id) => {
         include: [
             {
                 model: UserSkill,
-                as : "skills",
+                as: "skills",
                 include: [Skill],
             },
         ],
@@ -34,10 +34,14 @@ const deleteUser = async (id) => {
     return await user.destroy();
 };
 
-const searchUsersBySkill = async (skillName) => {
+// dao/user.dao.js
+const searchUsersBySkill = async (skillName, type) => {
     return await User.findAll({
         include: {
             model: UserSkill,
+            as: "skills",
+            required: true, // Ensures only users with the skill are returned
+            where: type ? { type } : undefined, // Optional filter on type
             include: {
                 model: Skill,
                 where: { name: skillName },
@@ -45,6 +49,7 @@ const searchUsersBySkill = async (skillName) => {
         },
     });
 };
+
 
 const countUsers = async () => {
     return await User.count();

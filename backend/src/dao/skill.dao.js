@@ -7,7 +7,7 @@ const ApiError = require("../utils/ApiError");
  * Get all approved skills
  */
 const getAllSkills = async () => {
-    return await Skill.findAll({ where: { approved: true } });
+    return await Skill.findAll({ where: { isApproved: true } });
 };
 
 /**
