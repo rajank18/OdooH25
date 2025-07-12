@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ onLoginClick, isLoggedIn, userData }) => {
   return (
     <header className="bg-gray-900 text-white px-6 py-4 shadow-md">
       <div className="flex items-center justify-between">
@@ -16,10 +16,26 @@ const Header = () => {
           SkillSwap
         </div>
 
-        {/* Profile */}
+        {/* Right Side: Either Log In or User Info */}
         <div className="hidden md:flex items-center gap-3">
-          <span className="font-medium">Log In</span>
-        </div>
+          {isLoggedIn ? (
+            <>
+              <img
+                src={userData.image}
+                alt="profile"
+                className="w-8 h-8 rounded-full"
+              />
+              <span className="font-medium">{userData.name}</span>
+            </>
+          ) : (
+            <button
+              onClick={onLoginClick}
+              className="font-medium hover:underline focus:outline-none"
+            >
+              Log In
+            </button>
+          )}
+        </div>  
       </div>
     </header>
   );
