@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Header = ({ onLoginClick, isLoggedIn, userData }) => {
+const Header = ({ isLoggedIn, userData }) => {
+  const navigate = useNavigate();
+
   return (
     <header className="bg-gray-900 text-white px-6 py-4 shadow-md">
       <div className="flex items-center justify-between">
@@ -11,8 +14,11 @@ const Header = ({ onLoginClick, isLoggedIn, userData }) => {
           </button>
         </div>
 
-        {/* Title */}
-        <div className="text-xl font-bold tracking-wide text-center w-full md:w-auto md:text-left md:ml-4">
+        {/* Title (Clickable) */}
+        <div
+          onClick={() => navigate('/')}
+          className="text-xl font-bold tracking-wide text-center w-full md:w-auto md:text-left md:ml-4 cursor-pointer hover:underline"
+        >
           SkillSwap
         </div>
 
@@ -29,13 +35,13 @@ const Header = ({ onLoginClick, isLoggedIn, userData }) => {
             </>
           ) : (
             <button
-              onClick={onLoginClick}
+              onClick={() => navigate('/login')}
               className="font-medium hover:underline focus:outline-none"
             >
               Log In
             </button>
           )}
-        </div>  
+        </div>
       </div>
     </header>
   );
