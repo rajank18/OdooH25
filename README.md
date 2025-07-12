@@ -8,7 +8,7 @@ Manav Majmudar
 
 Deep Patel
 
-# Skill Swap Platform
+# 1. Skill Swap Platform
 
 🚀 Overview
 The Skill Swap Platform is a mini application enabling users to list their skills and request skills from others in return, promoting peer learning and collaboration within communities.
