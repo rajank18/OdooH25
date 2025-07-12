@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 // const { notFound, errorHandler } = require("./middleware/errorHandler");
-// const Router = require("./routes");
+const Router = require("./routes");
 const sequelize = require("./config/db.js"); // Import the database connection
 
 const app = express();
@@ -17,7 +17,7 @@ app.get("/", (_req, res) => {
     res.send("Hello World! This is SkillShare-API by Team Eureka.");
 });
 
-// app.use(Router);
+app.use(Router);
 
 // app.use(notFound);
 // app.use(errorHandler);

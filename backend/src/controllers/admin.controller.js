@@ -1,7 +1,7 @@
 // File: controllers/admin.controller.js
 const userDao = require("../dao/user.dao");
 const skillDao = require("../dao/skill.dao");
-const logDao = require("../dao/log.dao");
+const logDao = require("../dao/activityLog.dao");
 const feedbackDao = require("../dao/feedback.dao");
 const swapDao = require("../dao/swap.dao");
 const messageDao = require("../dao/message.dao");

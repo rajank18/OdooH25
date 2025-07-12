@@ -4,12 +4,12 @@ const auth = require("../middlewares/auth.middleware.js");
 const admin = require("../middlewares/admin.middleware.js");
 
 router.use("/auth", require("./auth.route"));
-router.use("/users", auth, require("./user.routes"));
-router.use("/skills", auth, require("./skill.routes"));
-router.use("/user-skills", auth, require("./userSkill.routes"));
-router.use("/swaps", auth, require("./swap.routes"));
-router.use("/feedback", auth, require("./feedback.routes"));
-router.use("/messages", auth, require("./message.routes"));
-router.use("/admin", auth, admin, require("./admin.routes"));
+router.use("/users", auth, require("./user.route.js"));
+router.use("/skills", auth, require("./skill.route.js"));
+router.use("/user-skills", auth, require("./userSkill.route.js"));
+router.use("/swaps", auth, require("./swap.route.js"));
+router.use("/feedback", auth, require("./feedback.route.js"));
+router.use("/messages", auth, require("./message.route.js"));
+router.use("/admin", auth, admin, require("./admin.route.js"));
 
 module.exports = router;

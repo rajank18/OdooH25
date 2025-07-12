@@ -1,7 +1,8 @@
 // File: routes/message.routes.js
 const express = require("express");
 const router = express.Router();
-const validate = require("../middlewares/validate.middleware");
+const validate = require("../middlewares/validate.middleware.js");
+const auth = require("../middlewares/auth.middleware.js");
 const { createPlatformMessageSchema } = require("../validations/message.validation");
 const messageController = require("../controllers/message.controller");
 
